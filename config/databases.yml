@@ -1,0 +1,7 @@
+all:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn:      mysql:host=localhost;dbname=joaPolling
+      username: joaPolling
+      password: 2JaTtzFYY6F3WYFq
