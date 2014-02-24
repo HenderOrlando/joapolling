@@ -1,0 +1,89 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepageJurado:
+  url:   /Jurado/:abreviatura
+  param: { module: index, action: indexJurado }
+homepageJurado1:
+  url:   /Jurado
+  param: { module: index, action: indexJurado }
+listarVotante:
+  url:   /Lista-de-Votantes
+  param: { module: index, action: listaVotantes }
+listaVotante:
+  url:   /Lista-de-Votantes/:abreviatura
+  param: { module: index, action: listaVotantes }
+listarVotantes:
+  url:   /Lista-de-Votantes-Página/:pagina
+  param: { module: index, action: listaVotantes }
+buscarVotante:
+  url:   /Buscando-Votante
+  param: { module: index, action: listaVotantes }
+buscarVotantes:
+  url:   /Buscando-Votante-Página/:pagina
+  param: { module: index, action: listaVotantes }
+habilitaVotante:
+  url:   /Habilitar-Votante
+  param: { module: index, action: habilitarVotante }
+habilitaVotantes:
+  url:   /Habilitar-Votantes/:abreviatura
+  param: { module: index, action: habilitarVotante }
+habilitarVotante:
+  url:   /Habilitar-Votante/:abreviatura
+  param: { module: index, action: habilitarVotante }
+listarCandidatos:
+  url:   /Votos-Por-Candidatos/:eleccion
+  param: { module: index, action: listaCandidatos }
+listaCandidatos:
+  url:   /Votos-Por-Candidatos/:eleccion/:abreviatura
+  param: { module: index, action: listaCandidatos }
+votosMesa1:
+  url:   /Votos-Por-Mesa/:eleccion/:abreviatura
+  param: { module: index, action: votosMesa }
+votosMesa:
+  url:   /Votos-Por-Mesa/:eleccion
+  param: { module: index, action: votosMesa }
+votosCandidatos1:
+  url:   /Votos-Totales/:abreviatura
+  param: { module: index, action: votosTotales }
+votosCandidatos:
+  url:   /Votos-Totales
+  param: { module: index, action: votosTotales }
+resultados:
+  url:   /Resultados
+  param: { module: index, action: resultados }
+resultadosTotales:
+  url:   /Resultado-total
+  param: { module: index, action: resultadosTotal }
+resultadosMesa:
+  url:   /Resultados-Mesa
+  param: { module: index, action: resultadosMesa }
+votar:
+  url:   /Elecciones-para/:votacion
+  param: { module: index, action: votar }
+guardarVoto:
+  url:   /Guardar-Voto/:eleccion
+  param: { module: index, action: guardarVoto }
+homepageEntidadEducativa:
+  url:   /:abreviatura
+  param: { module: index, action: index }
+homepage:
+  #JoaPolling
+  url:   /
+  param: { module: index, action: index }
+salir:
+  url:   /Salir
+  param: { module: index, action: salir }
+sal:
+  url:   /Salir/:abreviatura
+  param: { module: index, action: salir }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

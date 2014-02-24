@@ -1,0 +1,99 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+agregaFondo:
+  url:   /Agregar-fondo/:fondo
+  param: { module: entidadEducativa, action: agregaFondo }
+agregaLogo:
+  url:   /Agregar-Logo
+  param: { module: entidadEducativa, action: agregaLogo }
+agregaMesa:
+  url:   /Agregar-Mesa
+  param: { module: entidadEducativa, action: nuevaMesa }
+listarMesas:
+  url:   /Lista-de-Mesas
+  param: { module: entidadEducativa, action: verMesas }
+agregaGrado:
+  url:   /Agregar-Grado
+  param: { module: entidadEducativa, action: nuevaGrado }
+listarGrados:
+  url:   /Lista-de-Grados
+  param: { module: entidadEducativa, action: verGrados }
+agregaEstudiante:
+  url:   /Agregar-Estudiante
+  param: { module: entidadEducativa, action: nuevaEstudiante }
+actualizaEstudiante:
+  url:   /Actualizar-Estudiante/:nombre/:id_estudiante
+  param: { module: entidadEducativa, action: actualizaEstudiante }
+listarEstudiantes:
+  url:   /Lista-de-Estudiantes
+  param: { module: entidadEducativa, action: verEstudiantes }
+agregaPersona:
+  url:   /Agregar-Persona/:tipo
+  param: { module: entidadEducativa, action: nuevaPersona }
+actualizaPersona:
+  url:   /Actualizar-Persona/:tipo/:nombre/:id_persona
+  param: { module: entidadEducativa, action: actualizaPersona }
+listarPersonas:
+  url:   /Lista-de-Personas
+  param: { module: entidadEducativa, action: verPersonas }
+agregaVotante:
+  url:   /Agregar-Votante
+  param: { module: entidadEducativa, action: nuevaVotante }
+actualizaVotante:
+  url:   /Actualizar-Votante/:nombre/:id_votante
+  param: { module: entidadEducativa, action: actualizaVotante }
+listarVotantes:
+  url:   /Lista-de-Votantes
+  param: { module: entidadEducativa, action: verVotantes }
+agregaCandidato:
+  url:   /Agregar-Candidato
+  param: { module: entidadEducativa, action: nuevaCandidato }
+actualizaCandidato:
+  url:   /Actualizar-Candidato/:nombre/:id_candidato
+  param: { module: entidadEducativa, action: actualizaCandidato }
+listarCandidatos:
+  url:   /Lista-de-Candidatos
+  param: { module: entidadEducativa, action: verCandidatos }
+agregaFotoCandidato:
+  url:   /Agregar-Foto-de-Candidato/:nombreCandidato
+  param: { module: entidadEducativa, action: agregaFotoCandidato }
+actualizaFotoCandidato:
+  url:   /Actualizar-Foto-de-Candidato/:nombre/:id_candidato
+  param: { module: entidadEducativa, action: actualizaFotoCandidato }
+agregaJurado:
+  url:   /Agregar-Jurado
+  param: { module: entidadEducativa, action: nuevaJurado }
+actualizaJurado:
+  url:   /Actualizar-Jurado/:nombre/:id_jurado
+  param: { module: entidadEducativa, action: actualizaJurado }
+listarJurados:
+  url:   /Lista-de-Jurados
+  param: { module: entidadEducativa, action: verJurados }
+cargaDatos:
+  url:   /Cargar-Datos-de-archivo/:tipo
+  param: { module: entidadEducativa, action: cargaDatos }
+# default rules
+homepage:
+  #JoaPolling
+  url:   /
+  param: { module: index, action: index }
+homepageEntidadEducativa:
+  url:   /:abreviatura
+  param: { module: index, action: index, ee: -1 }
+homepageEntidadEducativa1:
+  url:   /:ee
+  param: { module: index, action: index }
+salir:
+  #JoaPolling-Administrador
+  url:   /Salir/:abreviatura
+  param: { module: index, action: salir }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

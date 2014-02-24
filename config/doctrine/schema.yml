@@ -1,0 +1,824 @@
+Archivo:
+  connection: doctrine
+  tableName: archivo
+  columns:
+    id_archivo:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    src:
+      type: string(120)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    extension:
+      type: string(5)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    ArchivosEntidadEducativa:
+      local: id_archivo
+      foreign: id_archivo
+      type: many
+ArchivosEntidadEducativa:
+  connection: doctrine
+  tableName: archivos_entidad_educativa
+  columns:
+    id_entidad_educativa:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    id_archivo:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    id_tipo_uso:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha_creado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    EntidadEducativa:
+      local: id_entidad_educativa
+      foreign: id_entidad_educativa
+      type: one
+    Archivo:
+      local: id_archivo
+      foreign: id_archivo
+      type: one
+    Tipo:
+      local: id_tipo_uso
+      foreign: id_tipo
+      type: one
+    Candidato:
+      local: id_archivo
+      foreign: foto
+      type: many
+Candidato:
+  connection: doctrine
+  tableName: candidato
+  columns:
+    id_candidato:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    no:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    foto:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: false
+      autoincrement: false
+    votos:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    id_tipo_eleccion:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_candidato_representa:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: false
+      autoincrement: false
+    fecha_creado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Candidato:
+      local: id_candidato
+      foreign: id_candidato_representa
+      type: many
+    Votante:
+      local: id_candidato
+      foreign: id_votante
+      type: one
+    ArchivosEntidadEducativa:
+      local: foto
+      foreign: id_archivo
+      type: one
+    Tipo:
+      local: id_tipo_eleccion
+      foreign: id_tipo
+      type: one
+Curso:
+  connection: doctrine
+  tableName: curso
+  columns:
+    id_curso:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    abreviatura:
+      type: string(3)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha_creado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    CursosGrado:
+      local: id_curso
+      foreign: id_curso
+      type: many
+CursosGrado:
+  connection: doctrine
+  tableName: cursos_grado
+  columns:
+    id_curso_grado:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    id_curso:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_grado:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_entidad_educativa:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha_creado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Curso:
+      local: id_curso
+      foreign: id_curso
+      type: one
+    GradoEntidadEducativa:
+      local: id_grado
+      foreign: id_grado
+      type: one
+    GradoEntidadEducativa_3:
+      class: GradoEntidadEducativa
+      local: id_entidad_educativa
+      foreign: id_entidad_educativa
+      type: one
+    Estudiante:
+      local: id_curso_grado
+      foreign: id_curso
+      type: many
+EntidadEducativa:
+  connection: doctrine
+  tableName: entidad_educativa
+  columns:
+    id_entidad_educativa:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    nombre:
+      type: string(64)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    abreviatura:
+      type: string(15)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_tipo_entidad_educativa:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha_creado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Tipo:
+      local: id_tipo_entidad_educativa
+      foreign: id_tipo
+      type: one
+    ArchivosEntidadEducativa:
+      local: id_entidad_educativa
+      foreign: id_entidad_educativa
+      type: many
+    GradoEntidadEducativa:
+      local: id_entidad_educativa
+      foreign: id_entidad_educativa
+      type: many
+    MesaEntidadEducativa:
+      local: id_entidad_educativa
+      foreign: id_entidad_educativa
+      type: many
+    PerfilesPersona:
+      local: id_entidad_educativa
+      foreign: id_entidad_educativa
+      type: many
+Estudiante:
+  connection: doctrine
+  tableName: estudiante
+  columns:
+    id_curso:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_estudiante:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    cod_curso:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha_creado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    CursosGrado:
+      local: id_curso
+      foreign: id_curso_grado
+      type: one
+    Persona:
+      local: id_estudiante
+      foreign: id_persona
+      type: one
+Grado:
+  connection: doctrine
+  tableName: grado
+  columns:
+    id_grado:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    abreviatura:
+      type: string(3)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    nombre:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha_creado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    GradoEntidadEducativa:
+      local: id_grado
+      foreign: id_grado
+      type: many
+GradoEntidadEducativa:
+  connection: doctrine
+  tableName: grado_entidad_educativa
+  columns:
+    id_grado:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    id_entidad_educativa:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    fecha_creado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Grado:
+      local: id_grado
+      foreign: id_grado
+      type: one
+    EntidadEducativa:
+      local: id_entidad_educativa
+      foreign: id_entidad_educativa
+      type: one
+    CursosGrado:
+      local: id_grado
+      foreign: id_grado
+      type: many
+    CursosGrado_3:
+      class: CursosGrado
+      local: id_entidad_educativa
+      foreign: id_entidad_educativa
+      type: many
+Jurado:
+  connection: doctrine
+  tableName: jurado
+  columns:
+    id_jurado:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    id_entidad_educativa:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_mesa:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_tipo_jurado:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha_creado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Tipo:
+      local: id_tipo_jurado
+      foreign: id_tipo
+      type: one
+    MesaEntidadEducativa:
+      local: id_entidad_educativa
+      foreign: id_entidad_educativa
+      type: one
+    MesaEntidadEducativa_3:
+      class: MesaEntidadEducativa
+      local: id_mesa
+      foreign: id_mesa
+      type: one
+    Persona:
+      local: id_jurado
+      foreign: id_persona
+      type: one
+Mesa:
+  connection: doctrine
+  tableName: mesa
+  columns:
+    id_mesa:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    nombre:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha_creado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    MesaEntidadEducativa:
+      local: id_mesa
+      foreign: id_mesa
+      type: many
+MesaEntidadEducativa:
+  connection: doctrine
+  tableName: mesa_entidad_educativa
+  columns:
+    id_entidad_educativa:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    id_mesa:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    id_tipo_jornada:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha_creado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Tipo:
+      local: id_tipo_jornada
+      foreign: id_tipo
+      type: one
+    EntidadEducativa:
+      local: id_entidad_educativa
+      foreign: id_entidad_educativa
+      type: one
+    Mesa:
+      local: id_mesa
+      foreign: id_mesa
+      type: one
+    Jurado:
+      local: id_entidad_educativa
+      foreign: id_entidad_educativa
+      type: many
+    Jurado_3:
+      class: Jurado
+      local: id_mesa
+      foreign: id_mesa
+      type: many
+    Votante:
+      local: id_entidad_educativa
+      foreign: id_entidad_educativa
+      type: many
+    Votante_4:
+      class: Votante
+      local: id_mesa
+      foreign: id_mesa
+      type: many
+PerfilesPersona:
+  connection: doctrine
+  tableName: perfiles_persona
+  columns:
+    id_persona:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    id_tipo_perfil:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    id_entidad_educativa:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha_creado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Persona:
+      local: id_persona
+      foreign: id_persona
+      type: one
+    EntidadEducativa:
+      local: id_entidad_educativa
+      foreign: id_entidad_educativa
+      type: one
+    Tipo:
+      local: id_tipo_perfil
+      foreign: id_tipo
+      type: one
+Persona:
+  connection: doctrine
+  tableName: persona
+  columns:
+    id_persona:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    tipo_doc_id:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    nombre:
+      type: string(40)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    clave:
+      type: string(60)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha_creado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Tipo:
+      local: tipo_doc_id
+      foreign: id_tipo
+      type: one
+    Estudiante:
+      local: id_persona
+      foreign: id_estudiante
+      type: many
+    Jurado:
+      local: id_persona
+      foreign: id_jurado
+      type: many
+    PerfilesPersona:
+      local: id_persona
+      foreign: id_persona
+      type: many
+    Votante:
+      local: id_persona
+      foreign: id_votante
+      type: many
+Tipo:
+  connection: doctrine
+  tableName: tipo
+  columns:
+    id_tipo:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    nombre:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    descripcion:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    fecha_creado:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    objeto:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    ArchivosEntidadEducativa:
+      local: id_tipo
+      foreign: id_tipo_uso
+      type: many
+    Candidato:
+      local: id_tipo
+      foreign: id_tipo_eleccion
+      type: many
+    EntidadEducativa:
+      local: id_tipo
+      foreign: id_tipo_entidad_educativa
+      type: many
+    Jurado:
+      local: id_tipo
+      foreign: id_tipo_jurado
+      type: many
+    MesaEntidadEducativa:
+      local: id_tipo
+      foreign: id_tipo_jornada
+      type: many
+    PerfilesPersona:
+      local: id_tipo
+      foreign: id_tipo_perfil
+      type: many
+    Persona:
+      local: id_tipo
+      foreign: tipo_doc_id
+      type: many
+    Votante:
+      local: id_tipo
+      foreign: id_tipo_eleccion
+      type: many
+Votante:
+  connection: doctrine
+  tableName: votante
+  columns:
+    id_votante:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    voto:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    fecha_voto:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    id_entidad_educativa:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_mesa:
+      type: integer(1)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    habilitado:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    ingreso_votar:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    id_tipo_eleccion:
+      type: integer(8)
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Tipo:
+      local: id_tipo_eleccion
+      foreign: id_tipo
+      type: one
+    Persona:
+      local: id_votante
+      foreign: id_persona
+      type: one
+    MesaEntidadEducativa:
+      local: id_entidad_educativa
+      foreign: id_entidad_educativa
+      type: one
+    MesaEntidadEducativa_4:
+      class: MesaEntidadEducativa
+      local: id_mesa
+      foreign: id_mesa
+      type: one
+    Candidato:
+      local: id_votante
+      foreign: id_candidato
+      type: many

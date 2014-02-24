@@ -1,0 +1,411 @@
+/******** ESTRUCTURA ********/
+body *{
+    -webkit-transition-property: background, box-shadow, color, border, border-radius, text-shadow;
+    -webkit-transition-duration: 0.25s,0.25s,0.25s,0.25s,0.3s,0.25s;
+    -webkit-transition-timing-function: linear;
+    -webkit-transition-delay: 0;
+/*    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;*/
+}
+#tooltip *{
+    -webkit-transition-property: background, box-shadow, color, border, border-radius, text-shadow, height, width;
+    -webkit-transition-duration: 0.25s,0.25s,0.25s,0.25s,0.3s,0.25s;
+    -webkit-transition-timing-function: linear;
+    -webkit-transition-delay: 0;
+}
+body *:hover{
+    -webkit-transition-property: background, box-shadow, color, border, text-shadow;
+    -webkit-transition-duration: 0.2s;
+    -webkit-transition-timing-function: linear;
+    -webkit-transition-delay: 0;
+/*    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;*/
+}
+a.ui-button{
+  margin: 5px;
+}
+#encabezado{
+    top : 0;
+}
+#encabezado,
+#pie{
+    height: 80px;
+    left: 0;
+    z-index: 9;
+}
+#encabezado img.logo{
+    height: 60px;
+    position: absolute;
+    margin-left: -90px;
+}
+#pie{
+    text-align: center;
+    bottom: 0;
+    height: 40px;
+    margin: 0;
+    left: 10px;
+    position: fixed;
+}
+#go_to_admin{
+    right: 5px;
+    top: 5px;
+    position: absolute;
+}
+#contenido, #contenido-a{
+    font-size: 11px;
+    position: relative;
+    margin-bottom: 120px;
+}
+#contenido-a{
+    top: 40px;
+}
+#msg{
+    position: fixed;
+    z-index: 999;
+    top: -50px;
+}
+#msg div{
+    font-size: 0.8em;
+    padding: 10px;
+    padding-top: 14px;
+    color: #FFF;
+}
+table{
+    border-spacing: 0px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+table thead tr td{
+    padding: 5px 10px;
+}
+table tbody tr td:first-child{
+    border-left: 1px solid #000;
+}
+table tbody tr td:last-child{
+    border-right: 1px solid #000;
+}
+table tbody tr:last-child td{
+    border-bottom: 1px solid #000;
+}
+div.legend table thead tr td,
+div.legend table tbody tr td:first-child,
+div.legend table tbody tr td:last-child,
+div.legend table tbody tr:last-child td{
+    border: none;
+    box-shadow: 1px 1px 15px -5px rgba(0,0,0,0.8);
+    padding: 10px;
+}
+.lista-table{
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+.no-borde-all *,
+.no-borde,
+table.no-borde-all tbody tr:last-child td,
+table.no-borde-all tbody tr td:last-child{
+    border: none;
+}
+/******** MENU********/
+/******** MENU HORIZONTAL ********/
+ul.navmenu-h { 
+    margin: 0; 
+    padding: 0; 
+    list-style: none; 
+    position: relative; 
+}
+
+ul.navmenu-h ul {
+ width: 160px; /* Sub Menu Width */
+ margin: 0;
+ list-style: none;
+ display: none;
+ position: absolute;
+ top: 100%;
+ left: 0;
+}
+
+ul.navmenu-h ul ul,
+ul.navmenu-h ul ul ul { 
+    top: 0;
+    left: 100%; 
+}
+
+ul.navmenu-h li { 
+    float: left; 
+    display: inline; 
+    position: relative; 
+}
+ul.navmenu-h ul li {
+    width: 100%; 
+    display: block; 
+}
+
+/* Root Menu */
+ul.navmenu-h a {
+ border-top: 1px solid #FFF;
+ border-right: 1px solid #FFF;
+ padding: 6px;
+ float: left;
+ display: block;
+ background: #DDD;
+ color: #666;
+ font: bold 11px Arial, sans-serif;
+ text-decoration: none;
+ height: 1%;
+}
+
+/* Root Menu Hover Persistence */
+ul.navmenu-h a:hover,
+ul.navmenu-h li:hover a,
+ul.navmenu-h li.iehover a {
+ background: #BBB;
+ color: #FFF;
+}
+
+/* 2nd Menu */
+ul.navmenu-h li:hover li a,
+ul.navmenu-h li.iehover li a {
+ float: none;
+ background: #BBB;
+}
+
+/* 2nd Menu Hover Persistence */
+ul.navmenu-h li:hover li a:hover,
+ul.navmenu-h li:hover li:hover a,
+ul.navmenu-h li.iehover li a:hover,
+ul.navmenu-h li.iehover li.iehover a {
+ background: #999;
+}
+
+/* 3rd Menu */
+ul.navmenu-h li:hover li:hover li a,
+ul.navmenu-h li.iehover li.iehover li a {
+ background: #999;
+}
+
+/* 3rd Menu Hover Persistence */
+ul.navmenu-h li:hover li:hover li a:hover,
+ul.navmenu-h li:hover li:hover li:hover a,
+ul.navmenu-h li.iehover li.iehover li a:hover,
+ul.navmenu-h li.iehover li.iehover li.iehover a {
+ background: #666;
+}
+
+/* 4th Menu */
+ul.navmenu-h li:hover li:hover li:hover li a,
+ul.navmenu-h li.iehover li.iehover li.iehover li a {
+ background: #666;
+}
+
+/* 4th Menu Hover */
+ul.navmenu-h li:hover li:hover li:hover li a:hover,
+ul.navmenu-h li.iehover li.iehover li.iehover li a:hover {
+ background: #333;
+}
+
+/* Hover Function - Do Not Move */
+ul.navmenu-h li:hover ul ul,ul.navmenu-h li:hover ul ul ul,
+ul.navmenu-h li.iehover ul ul,ul.navmenu-h li.iehover ul ul ul { 
+    display: none; 
+}
+ul.navmenu-h li:hover ul,ul.navmenu-h ul li:hover ul,
+ul.navmenu-h ul ul li:hover ul,
+ul.navmenu-h li.iehover ul,
+ul.navmenu-h ul li.iehover ul,
+ul.navmenu-h ul ul li.iehover ul { 
+    display: block; 
+}
+/******** MENU HORIZONTAL ********/
+/******** MENU VERTICAL ********/
+ul.navmenu-v,ul.navmenu-v li,ul.navmenu-v ul {
+ width: 160px; /* Menu Width */
+ margin: 0;
+ list-style: none;
+}
+
+ul.navmenu-v li { 
+    float: left; 
+    position: relative;  
+    width: 100%; 
+}
+ul.navmenu-v li.iehover { 
+    z-index: 1000; /* IE z-index bugfix */ 
+}
+
+ul.navmenu-v ul {
+ display: none;
+ position: absolute;
+ top: 0;
+ left: 100%;
+ z-index: 9999;
+}
+
+/* Root Menu */
+ul.navmenu-v a {
+ border-top: 1px solid #FFF;
+ border-right: 1px solid #FFF;
+ padding: 6px;
+ display: block;
+ background: #DDD;
+ color: #666;
+ font: bold 11px Arial, sans-serif;
+ text-decoration: none;
+ height: 1%;
+}
+
+/* Root Menu Hover Persistence */
+ul.navmenu-v a:hover,
+ul.navmenu-v li:hover a,
+ul.navmenu-v li.iehover a {
+ background: #BBB;
+ color: #FFF;
+}
+
+/* 2nd Menu */
+ul.navmenu-v li:hover li a,
+ul.navmenu-v li.iehover li a {
+ float: none;
+ background: #BBB;
+}
+
+/* 2nd Menu Hover Persistence */
+ul.navmenu-v li:hover li a:hover,
+ul.navmenu-v li:hover li:hover a,
+ul.navmenu-v li.iehover li a:hover,
+ul.navmenu-v li.iehover li.iehover a {
+ background: #999;
+}
+
+/* 3rd Menu */
+ul.navmenu-v li:hover li:hover li a,
+ul.navmenu-v li.iehover li.iehover li a {
+ background: #999;
+}
+
+/* 3rd Menu Hover Persistence */
+ul.navmenu-v li:hover li:hover li a:hover,
+ul.navmenu-v li:hover li:hover li:hover a,
+ul.navmenu-v li.iehover li.iehover li a:hover,
+ul.navmenu-v li.iehover li.iehover li.iehover a {
+ background: #666;
+}
+
+/* 4th Menu */
+ul.navmenu-v li:hover li:hover li:hover li a,
+ul.navmenu-v li.iehover li.iehover li.iehover li a {
+ background: #666;
+}
+
+/* 4th Menu Hover */
+ul.navmenu-v li:hover li:hover li:hover li a:hover,
+ul.navmenu-v li.iehover li.iehover li.iehover li a:hover {
+ background: #333;
+}
+
+/* Hover Function - Do Not Move */
+ul.navmenu-v li:hover ul ul,ul.navmenu-v li:hover ul ul ul,
+ul.navmenu-v li.iehover ul ul,ul.navmenu-v li.iehover ul ul ul { 
+    display: none; 
+}
+ul.navmenu-v li:hover ul,
+ul.navmenu-v ul li:hover ul,
+ul.navmenu-v ul ul li:hover ul,
+ul.navmenu-v li.iehover ul,
+ul.navmenu-v ul li.iehover ul,
+ul.navmenu-v ul ul li.iehover ul { 
+    display: block; 
+}
+/******** MENU VERTICAL ********/
+/******** MENUS ********/
+/******** TITULOS ********/
+h1,h2,h3,h4{
+    text-transform: capitalize
+}
+h1,
+.titulo3d{
+    text-shadow: 1px 1px 0px rgba(230,230,230,1),  
+                2px 2px 0px rgba(200,200,200,1),  
+                3px 3px 0px rgba(180,180,180,1),  
+                4px 4px 0px rgba(160,160,160,1),
+                5px 5px 20px rgba(0,0,0,0.5);
+    letter-spacing: 2px;
+}
+h2,h3,h4{
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(180,180,180,1);
+}
+.titulo{
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.8);
+}
+/******** TITULOS ********/
+/******** FORMULARIOS ********/
+label{
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+form table tbody tr th{
+    text-align: left;
+}
+form table tbody tr th:after{
+    content: ':'
+}
+label:hover{
+    text-shadow: 1px 1px 7px rgba(0,0,0,0.7);
+}
+/*input, textarea, select{
+    border: 1px solid #CCC;
+    margin: 5px;
+    padding: 4px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.5);
+}
+input:hover, textarea:hover, select:hover{
+    box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.5);
+}*/
+.ui-state-hover{
+    box-shadow: 2px 2px 7px rgba(0,0,0,0.5);
+}
+div.formulario img{
+    margin-top: 10px;
+}
+/*a#reset,
+a#submit,
+a#salir{
+    margin: 10px;
+}*/
+.candidato img{
+    height: 200px;
+}
+ul.ui-selectmenu-menu li{
+    font-size: 12px;
+}
+/******** FORMULARIOS ********/
+/******** ESTRUCTURA ********/
+/******** FUENTES ********/
+#copyright,
+.titulo{
+    font-size: 1.2em;
+    font-weight: bolder;
+    font-style: italic;
+}
+#copyright{
+    position: relative;
+    top: 25px;
+    font-size: 10px;
+}
+.titulo{
+    top: 15px;
+    position: relative;
+    text-transform: capitalize;
+}
+/******** FUENTES ********/
+/******** POSICIONES ********/
+.centrar{
+    text-align: center;
+    margin: 0 auto;
+}
+.ui-widget.grid_12{
+    margin: 20px;
+}
+/******** POSICIONES ********/

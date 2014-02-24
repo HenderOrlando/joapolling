@@ -1,0 +1,40 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+
+# default rules
+homepage:
+  url:   /
+  param: { module: index, action: index }
+#Sale de la aplicacion
+salir:
+  url:   /Gracias
+  param: { module: index, action: salir }
+#Agregar Entidad Educativa
+agregaEntidad:
+  url:   /Agregar-Entidad-Educativa
+  param: { module: entidadesEducativas, action: nueva }
+#Agregar Administrador a Entidad Educativa
+agregaAdministrador:
+  url:   /Agregar-Administrador-a/:nombre/:id_entidad_educativa
+  param: { module: entidadesEducativas, action: agregaAdministrador }
+#Agregar Administrador a Entidad Educativa
+actualizaAdministrador:
+  url:   /Actualiza-Administrador-de/:nombre/:id_entidad_educativa
+  param: { module: entidadesEducativas, action: actualizaAdministrador }
+#Actualiza Entidad Educativa
+actualizaEntidad:
+  url:   /Actualizar-Entidad-Educativa/:nombre/:id_entidad_educativa
+  param: { module: entidadesEducativas, action: actualiza }
+#Administrar una Entidad Educativa
+admin:
+  url:   /Administrar/:ee
+  param: { module: entidadesEducativas, action: admin }
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*
